@@ -43,23 +43,31 @@ def main():
                 pygame.quit()
                 quit()
 
-            if event.type == pygame.MOUSEMOTION:
-                mouse_pos = pygame.mouse.get_pos()
-                gus.set_pos(mouse_pos[0], mouse_pos[1])
-
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                message_to_screen("ello there", BLACK)
-
-            if event.type == KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    gus.change_speed(-5, 0)
-            if event.type == KEYUP:
+                    gus.change_speed(-10, 0)
+                if event.key == pygame.K_RIGHT:
+                    gus.change_speed(10, 0)
+                if event.key == pygame.K_UP:
+                    gus.change_speed(0, -10)
+                if event.key == pygame.K_DOWN:
+                    gus.change_speed(0, 10)
+
+            if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
-                    gus.change_speed(5, 0)
+                    gus.change_speed(10, 0)
+                if event.key == pygame.K_RIGHT:
+                    gus.change_speed(-10, 0)
+                if event.key == pygame.K_UP:
+                    gus.change_speed(0, 10)
+                if event.key == pygame.K_DOWN:
+                    gus.change_speed(0, -10)
 
         clock.tick(FPS)
 
         this_map.draw_map(game_screen)
+
+        gus.up_date(collidable_objects)
 
         if pygame.sprite.collide_rect(gus, sand_block):
             message_to_screen("collision!", BLACK)
