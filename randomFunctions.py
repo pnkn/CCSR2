@@ -1,11 +1,7 @@
 from main import *
 import pygame
 
-
-def useless_function():
-    print("ello guvnuh")
-
-
+# creating font object for message_to_screen function
 font = pygame.font.SysFont(None, 25)
 
 

@@ -1,3 +1,4 @@
+from Buildings import *
 import pygame
 
 # map screen and tile size constants
@@ -26,8 +27,8 @@ class Toons(pygame.sprite.Sprite):
         self.origin_y = self.rect.centery
 
     def change_speed(self, h_speed, v_speed):
-        self.h_speed = h_speed
-        self.v_speed = v_speed
+        self.h_speed += h_speed
+        self.v_speed += v_speed
 
     def set_pos(self, x, y):
         self.rect.x = x - self.origin_x
@@ -38,9 +39,31 @@ class Toons(pygame.sprite.Sprite):
             self.image = pygame.image.load(filename)
             self.set_properties()
 
-    def up_date(self):
+    def up_date(self, collidable):
+
         self.rect.x += self.h_speed
+
+        collision_list = pygame.sprite.spritecollide(self, collidable, False)
+
+        for collided_object in collision_list:
+            if self.h_speed > 0:
+                # RIGHT DIRECTION
+                self.rect.right = collided_object.rect.left
+            elif self.h_speed < 0:
+                # LEFT DIRECTION
+                self.rect.left = collided_object.rect.right
+
         self.rect.y += self.v_speed
+
+        collision_list = pygame.sprite.spritecollide(self, collidable, False)
+
+        for collided_object in collision_list:
+            if self.v_speed > 0:
+                # DOWN DIRECTION
+                self.rect.bottom = collided_object.rect.top
+            elif self.v_speed < 0:
+                # UP DIRECTION
+                self.rect.top = collided_object.rect.bottom
 
 
 # sprite group, sprites must be in groups to be displayed
@@ -48,12 +71,11 @@ toons_group = pygame.sprite.Group()
 
 gus = Toons()
 gus.set_image("gus.png")
-gus.set_pos(384/2, 288/2)
-
-# for testing collision detection
-sand_block = Toons()
-sand_block.set_image("sand.png")
-sand_block.set_pos(105, 105)
+gus.set_pos(200, 200)
 
 # adding characters to a group
-toons_group.add(gus, sand_block)
+toons_group.add(gus)
+
+# collision detection
+collidable_objects = pygame.sprite.Group()
+collidable_objects.add(disco)

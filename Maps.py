@@ -19,27 +19,27 @@ textures = {
 
 # a few map screens for testing
 tile_set_1 = [
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS],
-    [CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT],
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, SAND, CEMENT, SAND, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, SAND, SAND, SAND, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS]
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]
 ]
 
 tile_set_2 = [
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, CEMENT, CEMENT, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, GRASS, GRASS],
-    [CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT, CEMENT],
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, GRASS, CEMENT, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, SAND, CEMENT, SAND, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS],
-    [GRASS, GRASS, GRASS, SAND, SAND, SAND, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS, GRASS]
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 2, 0, 0, 0, 1, 1, 1, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
 
 
@@ -53,6 +53,7 @@ class Map(object):
         for row in range(map_height):
             for column in range(map_width):
                 game_screen.blit(textures[self.tile_set[row][column]], (column*tile_size, row*tile_size))
+
 '''
     def screen_trans(self):
         # move current rect to player direction, while bringing in the next rect at the same time
